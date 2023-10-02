@@ -15,7 +15,7 @@ public class UserController	{
 		this.userService = userService;
 	}
 	//ADMIN refers to T5K-37
-	@PreAuthorize("hasAuthority('ADMIN')")
+//	@PreAuthorize("hasAuthority('ADMIN')") prepared for security
 	@GetMapping("/admin")
 	public List<UserResponse> getAllUsers() {
 		return userService.getUsers();
