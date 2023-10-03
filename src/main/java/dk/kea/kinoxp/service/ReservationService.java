@@ -4,6 +4,7 @@ import dk.kea.kinoxp.repository.UserRepository;
 import dk.kea.kinoxp.repository.ReservationRepository;
 import dk.kea.kinoxp.repository.MovieRepository;
 
+@Service
 public class ReservationService {
     UserRepository userRepository;
     MovieRepository movieRepository;
