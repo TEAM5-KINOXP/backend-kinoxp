@@ -17,28 +17,28 @@ public class UserController {
 
 	//ADMIN refers to T5K-37
 //	@PreAuthorize("hasAuthority('ADMIN')") prepared for security
-	@GetMapping("/admin")
-	public List<UserResponse> getAllUsers() {
-		return userService.getUsers();
-	}
-
-	@GetMapping(path = "/{username}")
-	public UserResponse getUserById(@PathVariable String username) throws Exception {
-		return userService.findById(username);
-	}
-
-	@PutMapping(path = "/{username}")
-	public UserResponse updateUser(@PathVariable String username, @RequestBody UserRequest userRequest) {
-		return userService.updateUser(username, userRequest);
-	}
-
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserResponse createUser(@RequestBody UserRequest userRequest) {
-		return userService.createUser(userRequest);
-	}
-
-	@DeleteMapping(path = "/{username}")
-	void deleteUser(@PathVariable String username) {
-		userService.deleteUser(username);
-	}
+//	@GetMapping("/admin")
+//	public List<UserResponse> getAllUsers() {
+//		return userService.getUsers();
+//	}
+//
+//	@GetMapping(path = "/{username}")
+//	public UserResponse getUserById(@PathVariable String username) throws Exception {
+//		return userService.findById(username);
+//	}
+//
+//	@PutMapping(path = "/{username}")
+//	public UserResponse updateUser(@PathVariable String username, @RequestBody UserRequest userRequest) {
+//		return userService.updateUser(username, userRequest);
+//	}
+//
+//	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//	public UserResponse createUser(@RequestBody UserRequest userRequest) {
+//		return userService.createUser(userRequest);
+//	}
+//
+//	@DeleteMapping(path = "/{username}")
+//	void deleteUser(@PathVariable String username) {
+//		userService.deleteUser(username);
+//	}
 }

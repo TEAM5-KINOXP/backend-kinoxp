@@ -33,4 +33,13 @@ public class Theater {
     private LocalDateTime created;
     @UpdateTimestamp
     private LocalDateTime edited;
+
+public Theater(String name, int maxSeats) {
+    this.name = name;
+    this.maxSeats = maxSeats;
+     for(int i = 1; i <= maxSeats; i++) {
+        this.seats.add(new Seat(i, false));
+    }
+     }
+
 }

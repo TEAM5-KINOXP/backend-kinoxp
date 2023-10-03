@@ -34,11 +34,11 @@ public class User extends UserWithRoles {
 	@OneToMany(mappedBy = "user")
 	private List<Reservation> reservations;
 
-	public User(String username, String email, String password, String firstName, String lastName, List<Reservation> reservations) {
+	public User(String username, String email, String password, String firstName, String lastName) {
 		super(username, email, password);
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.reservations = reservations;
+
 	}
 	public void addReservation(Reservation reservation){
 		if(reservations==null){
