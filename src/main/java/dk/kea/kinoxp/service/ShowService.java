@@ -5,11 +5,11 @@ import dk.kea.kinoxp.repository.TheaterRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ScheduleService {
+public class ShowService {
     TheaterRepository theaterRepository;
     MovieRepository movieRepository;
 
-    public ScheduleService(TheaterRepository theaterRepository, MovieRepository movieRepository) {
+    public ShowService(TheaterRepository theaterRepository, MovieRepository movieRepository) {
         this.theaterRepository = theaterRepository;
         this.movieRepository = movieRepository;
     }
