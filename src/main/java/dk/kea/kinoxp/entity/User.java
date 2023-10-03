@@ -31,21 +31,20 @@ public class User extends UserWithRoles {
 	private LocalDateTime edited;
 
 	// addrelations
+	@OneToMany(mappedBy = "user")
 	private List<Reservation> reservations;
 
-}
-public User(String username, String email, String password, String firstName, String lastName, List<Reservation> reservations) {
-	super(username, email, password);
-	this.username = username;
-	this.email = email;
-	this.password = password;
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.reservations = reservations;
-}
+	public User(String username, String email, String password, String firstName, String lastName, List<Reservation> reservations) {
+		super(username, email, password);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.reservations = reservations;
+	}
 	public void addReservation(Reservation reservation){
 		if(reservations==null){
 			reservations=new ArrayList<>();
 		}
 		reservations.add(reservation);
 	}
+}
+
