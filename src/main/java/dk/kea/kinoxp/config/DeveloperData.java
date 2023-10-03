@@ -50,8 +50,8 @@ public class DeveloperData implements ApplicationRunner
 			movieShowRepository.save(s1);
 
 			//Reservations
-			Seat seat=movieShowRepository.findById(1).get().getSeats().get(0);
-			Reservation r1 =new Reservation(s1,u1,seat);
+
+			Reservation r1 =new Reservation(s1,u1,1);
 			reservationRepository.save(r1);
 
 		}
