@@ -12,12 +12,20 @@ import java.time.LocalDate;
 @Builder
 @Entity
 public class Reservation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDate reservationDate;
-
-    public Reservation(LocalDate rentalDate) {
+    @ManyToOne
+    User user;
+    @ManyToOne
+    Movie movie;
+    public Reservation(LocalDate rentalDate, Movie movie, User user) {
         this.reservationDate = rentalDate;
+        this.movie = movie;
+        this.user = user;
+        movie.addReservation(this);
+        user.addReservation(this);
     }
 }

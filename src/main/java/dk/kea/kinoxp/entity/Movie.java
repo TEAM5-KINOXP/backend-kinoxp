@@ -1,14 +1,12 @@
 package dk.kea.kinoxp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,7 +19,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private String title;
     private String description;
     private String genre;
     private String posterImg;
@@ -29,4 +27,22 @@ public class Movie {
     private LocalDateTime created;
     @UpdateTimestamp
     private LocalDateTime edited;
+
+    @OneToMany(mappedBy = "movie")
+    private List<Reservation> reservations;
+
+    @OneToMany(mappedBy = "movie")
+    private List<Show> shows;
+    public void addReservation(Reservation reservation){
+        if(reservations==null){
+            reservations=List.of();
+        }
+        reservations.add(reservation);
+    }
+    public Movie(String title, String description, String genre, String posterImg) {
+        this.title = title;
+        this.description = description;
+        this.genre = genre;
+        this.posterImg = posterImg;
+    }
 }
