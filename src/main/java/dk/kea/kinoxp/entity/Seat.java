@@ -30,10 +30,9 @@ public class Seat {
         this.seatNumber = seatNumber;
 
     }
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+    }
 
 
-    public void addReservation(Reservation reservation)
-        {
-            reservations.add(reservation);
-        }
 }

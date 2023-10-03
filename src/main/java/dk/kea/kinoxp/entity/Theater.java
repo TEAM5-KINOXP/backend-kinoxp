@@ -1,9 +1,6 @@
 package dk.kea.kinoxp.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,6 +18,8 @@ import java.util.List;
 public class Theater {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
     @Column(nullable = false, length = 50, unique = true)
     String name;
 

@@ -49,10 +49,11 @@ public class DeveloperData implements ApplicationRunner
 			MovieShow s1=new MovieShow(date,m1,t1,1);
 			movieShowRepository.save(s1);
 
-			//Reservations
+			//Reservations : something fails here
 
-			Reservation r1 =new Reservation(s1,u1,1);
-			reservationRepository.save(r1);
+//			Reservation r1 =new Reservation(s1,u1,1);
+//
+//			reservationRepository.save(r1);
 
 		}
 	}

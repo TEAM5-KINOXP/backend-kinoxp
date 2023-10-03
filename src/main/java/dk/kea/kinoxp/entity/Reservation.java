@@ -32,6 +32,7 @@ public class Reservation {
         movieShow.addReservation(this);
         user.addReservation(this);
         this.seat=movieShow.getSeats().get(seatNumber);
+        seat.addReservation(this);
 
     }
 }
