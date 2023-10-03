@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -15,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Show {
+public class MovieShow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -29,12 +30,18 @@ public class Show {
     Movie movie;
     @ManyToOne
     Theater theater;
-    @OneToMany(mappedBy = "show")
+    @OneToMany(mappedBy = "movieShow")
     List<Seat> seats;
+    @OneToMany
+    List<Reservation> reservations = new ArrayList<>();
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+    }
     private int timeslot;
-    public Show(LocalDate localDate, Movie movie, Theater theater, int timeslot) {
+    public MovieShow(LocalDate localDate, Movie movie, Theater theater, int timeslot) {
         this.localDate = localDate;
         this.movie = movie;
         this.theater = theater;
+        this.timeslot = timeslot;
     }
 }

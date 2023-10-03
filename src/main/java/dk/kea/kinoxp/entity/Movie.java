@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -29,16 +30,8 @@ public class Movie {
     private LocalDateTime edited;
 
     @OneToMany(mappedBy = "movie")
-    private List<Reservation> reservations;
+    private List<MovieShow> movieShows;
 
-    @OneToMany(mappedBy = "movie")
-    private List<Show> shows;
-    public void addReservation(Reservation reservation){
-        if(reservations==null){
-            reservations=List.of();
-        }
-        reservations.add(reservation);
-    }
     public Movie(String title, String description, String genre, String posterImg) {
         this.title = title;
         this.description = description;

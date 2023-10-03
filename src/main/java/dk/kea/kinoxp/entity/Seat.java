@@ -1,9 +1,6 @@
 package dk.kea.kinoxp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -18,6 +15,11 @@ public class Seat {
     private int id;
     private int seatNumber;
     private boolean isReserved;
+
+    @ManyToOne
+    MovieShow movieShow;
+    @ManyToOne
+    Theater theater;
 
     public Seat(int seatNumber, boolean isReserved) {
         this.seatNumber = seatNumber;

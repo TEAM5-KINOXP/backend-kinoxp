@@ -20,12 +20,12 @@ public class Reservation {
     @ManyToOne
     User user;
     @ManyToOne
-    Movie movie;
-    public Reservation(LocalDate rentalDate, Movie movie, User user) {
+    MovieShow movieShow;
+    public Reservation(LocalDate rentalDate, MovieShow movieShow, User user) {
         this.reservationDate = rentalDate;
-        this.movie = movie;
+        this.movieShow = movieShow;
         this.user = user;
-        movie.addReservation(this);
+        movieShow.addReservation(this);
         user.addReservation(this);
     }
 }

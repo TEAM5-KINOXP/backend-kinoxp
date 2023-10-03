@@ -1,6 +1,7 @@
 package dk.kea.kinoxp.service;
 
 import dk.kea.kinoxp.entity.User;
+import dk.kea.kinoxp.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import java.util.List;
 public class UserService {
 	UserRepository userRepository;
 
-	public List<UserResponse> getAllUsers() {
+	/*public List<UserResponse> getAllUsers() {
 		List<User> users = UserRepository.findAll();
 		List<UserResponse> respons = users.stream().map((user -> new UserResponse(user))).toList();
 		return respons;
@@ -49,5 +50,5 @@ public class UserService {
 
 	public void deleteUser(String username) {
 		userRepository.deleteById(username);
-	}
+	}*/
 }

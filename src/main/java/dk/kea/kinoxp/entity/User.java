@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
+//@Builder
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -32,7 +32,7 @@ public class User extends UserWithRoles {
 
 	// addrelations
 	@OneToMany(mappedBy = "user")
-	private List<Reservation> reservations;
+	private List<Reservation> reservations = new ArrayList<>();
 
 	public User(String username, String email, String password, String firstName, String lastName) {
 		super(username, email, password);
@@ -41,9 +41,6 @@ public class User extends UserWithRoles {
 
 	}
 	public void addReservation(Reservation reservation){
-		if(reservations==null){
-			reservations=new ArrayList<>();
-		}
 		reservations.add(reservation);
 	}
 }

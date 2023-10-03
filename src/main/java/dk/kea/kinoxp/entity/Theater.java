@@ -27,7 +27,7 @@ public class Theater {
     int maxSeats;
 
     @OneToMany(mappedBy = "theater")
-    private List<Seat> seats;
+    private List<Seat> seats = new ArrayList<>();
 
     @CreationTimestamp
     private LocalDateTime created;

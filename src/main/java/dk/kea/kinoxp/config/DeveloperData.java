@@ -7,7 +7,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Configuration
 
@@ -17,41 +16,41 @@ public class DeveloperData implements ApplicationRunner
 		ReservationRepository reservationRepository;
 		TheaterRepository theaterRepository;
 		UserRepository userRepository;
-		ShowRepository showRepository;
+		MovieShowRepository movieShowRepository;
 
 		public DeveloperData(MovieRepository movieRepository, ReservationRepository reservationRepository,
-									TheaterRepository theaterRepository, UserRepository userRepository, ShowRepository showRepository)
+									TheaterRepository theaterRepository, UserRepository userRepository, MovieShowRepository movieShowRepository)
 			{
 				this.movieRepository = movieRepository;
 				this.reservationRepository = reservationRepository;
 				this.theaterRepository = theaterRepository;
 				this.userRepository = userRepository;
-				this.showRepository = showRepository;
+				this.movieShowRepository = movieShowRepository;
 			}
 
 		@Override
 		public void run(ApplicationArguments args) throws Exception{
 			//Users
 			User u1=new User("username1","email1","password1","firstName1","lastName1");
+			userRepository.save(u1);
 
 			//movies:
 			Movie m1=new Movie("Title1","Description1","Genre1","PosterImg1");
 			movieRepository.save(m1);
-
-			//Reservations
-			Reservation r1=new Reservation(LocalDate.now(),m1,userRepository.findByUsername("user1"));
-			reservationRepository.save(r1);
-
 
 			//Theaters
 			Theater t1=new Theater("Name1",100);
 			theaterRepository.save(t1);
 
 
-
 			//Shows
-			Show s1=new Show(LocalDate.now(),m1,t1,1);
-			showRepository.save(s1);
+			MovieShow s1=new MovieShow(LocalDate.now(),m1,t1,1);
+			movieShowRepository.save(s1);
+
+			//Reservations
+			Reservation r1=new Reservation(LocalDate.now(),s1,u1);
+			reservationRepository.save(r1);
+
 		}
 	}
 
