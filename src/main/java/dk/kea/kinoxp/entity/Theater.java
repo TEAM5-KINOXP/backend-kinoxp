@@ -38,7 +38,7 @@ public Theater(String name, int maxSeats) {
     this.name = name;
     this.maxSeats = maxSeats;
      for(int i = 1; i <= maxSeats; i++) {
-        this.seats.add(new Seat(i, false));
+        this.seats.add(new Seat(i));
     }
      }
 

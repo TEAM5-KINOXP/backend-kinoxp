@@ -30,6 +30,8 @@ public class DeveloperData implements ApplicationRunner
 
 		@Override
 		public void run(ApplicationArguments args) throws Exception{
+			LocalDate date=LocalDate.now();
+			LocalDate date2=date.plusDays(5);
 			//Users
 			User u1=new User("username1","email1","password1","firstName1","lastName1");
 			userRepository.save(u1);
@@ -39,16 +41,17 @@ public class DeveloperData implements ApplicationRunner
 			movieRepository.save(m1);
 
 			//Theaters
-			Theater t1=new Theater("Name1",100);
+			Theater t1=new Theater("Name1",100); // theater creates seats
 			theaterRepository.save(t1);
 
 
 			//Shows
-			MovieShow s1=new MovieShow(LocalDate.now(),m1,t1,1);
+			MovieShow s1=new MovieShow(date,m1,t1,1);
 			movieShowRepository.save(s1);
 
 			//Reservations
-			Reservation r1=new Reservation(LocalDate.now(),s1,u1);
+			Seat seat=movieShowRepository.findById(1).get().getSeats().get(0);
+			Reservation r1 =new Reservation(s1,u1,seat);
 			reservationRepository.save(r1);
 
 		}
