@@ -20,8 +20,8 @@ public class MovieShow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private LocalDate showingdate;
+    private int timeslot;
+    private LocalDate showingDate;
     @CreationTimestamp
     private LocalDateTime created;
     @UpdateTimestamp
@@ -39,9 +39,8 @@ public class MovieShow {
     @OneToMany
     List<Reservation> reservations = new ArrayList<>();
 
-    private int timeslot;
-    public MovieShow(LocalDate showingdate, Movie movie, Theater theater, int timeslot) {
-        this.showingdate = showingdate;
+    public MovieShow(LocalDate showingDate, Movie movie, Theater theater, int timeslot) {
+        this.showingDate = showingDate;
         this.movie = movie;
         this.theater = theater;
         this.timeslot = timeslot;

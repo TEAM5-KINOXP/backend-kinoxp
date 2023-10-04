@@ -1,5 +1,6 @@
 package dk.kea.kinoxp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -29,6 +30,7 @@ public class Movie {
     @UpdateTimestamp
     private LocalDateTime edited;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "movie")
     private List<MovieShow> movieShows;
 
