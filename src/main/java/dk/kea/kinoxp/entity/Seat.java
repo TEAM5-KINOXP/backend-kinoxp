@@ -19,8 +19,8 @@ public class Seat {
     private int seatNumber;
     //private boolean isReserved;
 
-    @ManyToOne
-    MovieShow movieShow;
+//    @ManyToOne
+//    MovieShow movieShow;
     @ManyToOne
     Theater theater;
     @OneToMany(mappedBy = "seat")

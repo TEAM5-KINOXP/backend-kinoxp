@@ -3,6 +3,7 @@ package dk.kea.kinoxp.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
@@ -34,9 +35,10 @@ public class MovieShow {
 
     //available seats we could remove a seat from the list if it was reserved. or we could
     //change to Map<Seat,Boolean> and switch the Boolean to false if the seat was reserved
-    @OneToMany(mappedBy = "movieShow")
+
+    @ManyToMany
     List<Seat> seats;
-    @OneToMany
+    @OneToMany(mappedBy = "movieShow")
     List<Reservation> reservations = new ArrayList<>();
 
     private int timeslot;
@@ -45,7 +47,13 @@ public class MovieShow {
         this.movie = movie;
         this.theater = theater;
         this.timeslot = timeslot;
-        this.seats = theater.getSeats();
+        this.seats = new ArrayList<>();
+        for(int i = 0; i <= theater.getSeats().size()-1; i++) {
+          Seat  seat=theater.getSeats().get(i);
+            this.seats.add(seat);
+        }
+
+
     }
     public void addReservation(Reservation reservation){
         reservations.add(reservation);

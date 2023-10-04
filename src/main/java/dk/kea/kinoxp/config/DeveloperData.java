@@ -17,15 +17,18 @@ public class DeveloperData implements ApplicationRunner
 		TheaterRepository theaterRepository;
 		UserRepository userRepository;
 		MovieShowRepository movieShowRepository;
+		SeatRepository seatRepository;
 
 		public DeveloperData(MovieRepository movieRepository, ReservationRepository reservationRepository,
-									TheaterRepository theaterRepository, UserRepository userRepository, MovieShowRepository movieShowRepository)
+									TheaterRepository theaterRepository, UserRepository userRepository,
+									MovieShowRepository movieShowRepository, SeatRepository seatRepository)
 			{
 				this.movieRepository = movieRepository;
 				this.reservationRepository = reservationRepository;
 				this.theaterRepository = theaterRepository;
 				this.userRepository = userRepository;
 				this.movieShowRepository = movieShowRepository;
+				this.seatRepository = seatRepository;
 			}
 
 		@Override
@@ -39,21 +42,36 @@ public class DeveloperData implements ApplicationRunner
 			//movies:
 			Movie m1=new Movie("Title1","Description1","Genre1","PosterImg1");
 			movieRepository.save(m1);
+			Movie m2=new Movie("Title2","Description2","Genre2","PosterImg2");
+			movieRepository.save(m2);
 
 			//Theaters
 			Theater t1=new Theater("Name1",100); // theater creates seats
 			theaterRepository.save(t1);
+			seatRepository.saveAll(t1.getSeats());
+			Theater t2=new Theater("Name2",300); // theater creates seats
+			theaterRepository.save(t2);
+			seatRepository.saveAll(t2.getSeats());
 
 
 			//Shows
 			MovieShow s1=new MovieShow(date,m1,t1,1);
 			movieShowRepository.save(s1);
+			MovieShow s2=new MovieShow(date,m2,t2,2);
+			MovieShow s3=new MovieShow(date2,m2,t1,2);
+			movieShowRepository.save(s2);
+			movieShowRepository.save(s3);
+
+
 
 			//Reservations : something fails here
 
-//			Reservation r1 =new Reservation(s1,u1,1);
-//
-//			reservationRepository.save(r1);
+			Reservation r1 = new Reservation(s1,u1,1);
+			Reservation r2 = new Reservation(s2,u1,69);
+			Reservation r3 = new Reservation(s3,u1,69);
+			reservationRepository.save(r1);
+			reservationRepository.save(r2);
+			reservationRepository.save(r3);
 
 		}
 	}
