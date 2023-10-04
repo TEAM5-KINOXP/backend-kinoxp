@@ -44,6 +44,8 @@ public class DeveloperData implements ApplicationRunner
 			movieRepository.save(m1);
 			Movie m2=new Movie("Title2","Description2","Genre2","PosterImg2");
 			movieRepository.save(m2);
+			Movie m3=new Movie("Title3","Description3","Genre3","PosterImg3");
+			movieRepository.save(m3);
 
 			//Theaters
 			Theater t1=new Theater("Name1",100); // theater creates seats
@@ -62,7 +64,8 @@ public class DeveloperData implements ApplicationRunner
 			movieShowRepository.save(s2);
 			movieShowRepository.save(s3);
 
-
+			MovieShow s4 = new MovieShow(date,m3,t1,1);
+			movieShowRepository.save(s4);
 
 			//Reservations : something fails here
 
