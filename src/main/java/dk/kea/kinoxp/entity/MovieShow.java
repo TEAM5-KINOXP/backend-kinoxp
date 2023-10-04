@@ -20,7 +20,8 @@ public class MovieShow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDate localDate;
+
+    private LocalDate showingdate;
     @CreationTimestamp
     private LocalDateTime created;
     @UpdateTimestamp
@@ -30,18 +31,24 @@ public class MovieShow {
     Movie movie;
     @ManyToOne
     Theater theater;
+
+    //available seats we could remove a seat from the list if it was reserved. or we could
+    //change to Map<Seat,Boolean> and switch the Boolean to false if the seat was reserved
     @OneToMany(mappedBy = "movieShow")
     List<Seat> seats;
     @OneToMany
     List<Reservation> reservations = new ArrayList<>();
-    public void addReservation(Reservation reservation){
-        reservations.add(reservation);
-    }
+
     private int timeslot;
-    public MovieShow(LocalDate localDate, Movie movie, Theater theater, int timeslot) {
-        this.localDate = localDate;
+    public MovieShow(LocalDate showingdate, Movie movie, Theater theater, int timeslot) {
+        this.showingdate = showingdate;
         this.movie = movie;
         this.theater = theater;
         this.timeslot = timeslot;
+        this.seats = theater.getSeats();
     }
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+    }
+
 }

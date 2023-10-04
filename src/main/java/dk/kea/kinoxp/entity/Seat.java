@@ -3,6 +3,9 @@ package dk.kea.kinoxp.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,16 +17,21 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int seatNumber;
-    private boolean isReserved;
+    //private boolean isReserved;
 
     @ManyToOne
     MovieShow movieShow;
     @ManyToOne
     Theater theater;
+    @OneToMany(mappedBy = "seat")
+    List<Reservation> reservations = new ArrayList<>();
 
-    public Seat(int seatNumber, boolean isReserved) {
+    public Seat(int seatNumber) {
         this.seatNumber = seatNumber;
-        this.isReserved = isReserved;
+
+    }
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
     }
 
 
