@@ -1,5 +1,7 @@
 package dk.kea.kinoxp.api;
 
+import dk.kea.kinoxp.dto.UserRequest;
+import dk.kea.kinoxp.dto.UserResponse;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -32,10 +34,10 @@ public class UserController {
 //		return userService.updateUser(username, userRequest);
 //	}
 //
-//	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public UserResponse createUser(@RequestBody UserRequest userRequest) {
-//		return userService.createUser(userRequest);
-//	}
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public UserResponse createUser(@RequestBody UserRequest userRequest) {
+		return userService.createUser(userRequest);
+	}
 //
 //	@DeleteMapping(path = "/{username}")
 //	void deleteUser(@PathVariable String username) {

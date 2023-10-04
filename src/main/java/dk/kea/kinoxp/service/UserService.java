@@ -1,5 +1,7 @@
 package dk.kea.kinoxp.service;
 
+import dk.kea.kinoxp.dto.UserRequest;
+import dk.kea.kinoxp.dto.UserResponse;
 import dk.kea.kinoxp.entity.User;
 import dk.kea.kinoxp.repository.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,16 @@ import java.util.List;
 
 public class UserService {
 	UserRepository userRepository;
+
+	public UserService(UserRepository userRepository){
+		this.userRepository = userRepository;
+	}
+
+	public UserResponse createUser(UserRequest userRequest) {
+		User user = UserRequest.getUserEntity(userRequest);
+		userRepository.save(user);
+		return new UserResponse(user);
+	}
 
 	/*public List<UserResponse> getAllUsers() {
 		List<User> users = UserRepository.findAll();
@@ -38,11 +50,6 @@ public class UserService {
 		return ResponseEntity.ok(true);
 	}
 
-	public UserResponse createUser(UserRequest userRequest) {
-		User user = UserRequest.getUserEntity(userRequest);
-		userRepository.save(user);
-		return new UserResponse(user);
-	}
 
 	public User getUser(String username) {
 		return userRepository.findById(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
