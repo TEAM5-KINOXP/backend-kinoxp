@@ -23,6 +23,10 @@ public class UserRequest {
     }
     
     public static User getUserEntity(UserRequest userRequest){
-        return new User(userRequest.getUsername(), userRequest.email, userRequest.password, userRequest.firstName, userRequest.lastName)
+        return new User(userRequest.username,
+                        userRequest.email,
+                        userRequest.password,
+                        userRequest.firstName,
+                        userRequest.lastName);
     }
 }
