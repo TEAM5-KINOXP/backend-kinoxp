@@ -19,11 +19,13 @@ public class Seat {
     private int seatNumber;
     //private boolean isReserved;
 
-//    @ManyToOne
+//    @ManyToMany
+//    @JoinColumn(name = "seat_id")
 //    MovieShow movieShow;
     @ManyToOne
     Theater theater;
-    @OneToMany(mappedBy = "seat")
+    @OneToMany
+    @JoinColumn(name = "seat_id")
     List<Reservation> reservations = new ArrayList<>();
 
     public Seat(int seatNumber) {

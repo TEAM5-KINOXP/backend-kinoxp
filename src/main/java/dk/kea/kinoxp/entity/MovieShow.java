@@ -37,7 +37,8 @@ public class MovieShow {
     //change to Map<Seat,Boolean> and switch the Boolean to false if the seat was reserved
 
     @ManyToMany
-    List<Seat> seats;
+    @JoinColumn(name = "movie_show_id")
+    List<Seat> seats=new ArrayList<>();
     @OneToMany(mappedBy = "movieShow")
     List<Reservation> reservations = new ArrayList<>();
 
