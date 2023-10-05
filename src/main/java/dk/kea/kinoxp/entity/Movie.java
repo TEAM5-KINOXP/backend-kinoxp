@@ -24,6 +24,7 @@ public class Movie {
     private String title;
     private String description;
     private String genre;
+    @Column(length = 1000000)
     private String posterImg;
     @CreationTimestamp
     private LocalDateTime created;
