@@ -13,7 +13,8 @@ import java.util.List;
 
 @Getter
 @Setter
-//@Builder
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
