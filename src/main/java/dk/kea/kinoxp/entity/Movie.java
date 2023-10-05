@@ -17,20 +17,24 @@ import java.util.List;
 @Builder
 @Entity
 public class Movie {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
+    @Column(length = 2000)
     private String description;
     private String genre;
     @Column(length = 1000000)
     private String posterImg;
+
     @CreationTimestamp
     private LocalDateTime created;
     @UpdateTimestamp
     private LocalDateTime edited;
 
+    @Column(unique = true)
+    private String imdbID;
     @JsonIgnore
     @OneToMany(mappedBy = "movie")
     private List<MovieShow> movieShows;
