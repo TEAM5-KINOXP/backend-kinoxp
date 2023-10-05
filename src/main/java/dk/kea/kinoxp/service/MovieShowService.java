@@ -20,6 +20,6 @@ public class MovieShowService {
 
     public List<MovieShowResponse> getAllMovieShows() {
         List<MovieShow> movieShows = movieShowRepository.findAll();
-        return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow)).toList();
+        return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow, false)).toList();
     }
 }

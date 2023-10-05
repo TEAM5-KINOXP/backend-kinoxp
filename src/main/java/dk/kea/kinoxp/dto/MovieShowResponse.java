@@ -23,7 +23,7 @@ public class MovieShowResponse {
     Theater theater;
     Movie movie;
 
-    public MovieShowResponse(MovieShow movieShow) {
+    public MovieShowResponse(MovieShow movieShow, boolean showRes) {
         this.id = movieShow.getId();
         this.showingDate = movieShow.getShowingDate();
         this.timeslot = movieShow.getTimeslot();
@@ -33,7 +33,7 @@ public class MovieShowResponse {
         if(movieShow.getMovie() != null){
             this.movie = movieShow.getMovie();
         }
-        if(movieShow.getReservations() != null){
+        if(movieShow.getReservations() != null && showRes){
             reservations = movieShow.getReservations().stream().map((res) -> new ReservationResponse()).toList();
         }
     }

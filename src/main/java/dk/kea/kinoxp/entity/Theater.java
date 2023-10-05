@@ -1,5 +1,6 @@
 package dk.kea.kinoxp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dk.kea.kinoxp.repository.SeatRepository;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,7 +28,7 @@ public class Theater {
     String name;
 
     int maxSeats;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "theater")
     private List<Seat> seats = new ArrayList<>();
 
