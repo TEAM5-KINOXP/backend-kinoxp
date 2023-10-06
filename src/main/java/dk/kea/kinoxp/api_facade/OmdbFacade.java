@@ -9,7 +9,7 @@ public class OmdbFacade {
     RestTemplate restTemplate;
 
     public OmdbFacade() {
-        restTemplate = new RestTemplate();
+        this.restTemplate = new RestTemplate();
     }
     @Value("${app.omdb-key}")
     String API_KEY;
