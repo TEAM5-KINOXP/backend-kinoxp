@@ -54,7 +54,8 @@ public class DeveloperData implements ApplicationRunner
 			//Users
 			User u1 = new User("username1", "email1", "password1", "firstName1", "lastName1");
 			userRepository.save(u1);
-
+			User u2 = new User("username2", "email2", "password2", "firstName1", "lastName1");
+			userRepository.save(u2);
 			//movies:
 			Movie m1 = new Movie("Title1", "Description1", "Genre1", encodedString);
 			movieRepository.save(m1);
