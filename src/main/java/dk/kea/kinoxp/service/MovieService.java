@@ -9,9 +9,12 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -29,27 +32,26 @@ public class MovieService {
                 orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
     }
 
-//    public Movie addMovie(String imdbId) throws JsonProcessingException {
-//
-//        MovieOmdbResponse dto = omdbFacade.getMovie(imdbId);
-//
-//        Movie movie = Movie.builder()
-//                .title(dto.getTitle())
-//                .genre(dto.getGenre())
-//                .description(dto.getDescription())
-//                .posterImg(dto.getPosterImg())
-//                .imdbID(dto.getImdbID())
-//                .build();
-//        try {
-//            movieRepository.save(movie);
-//            return movie;
-//        } catch(DataIntegrityViolationException e) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getRootCause().getMessage());
-//        } catch(Exception e) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Could not add movie");
+    public List<Movie> getAllMovies() {
+        return movieRepository.findAll();
+    }
+    public void deleteMovie(int id) {
+        movieRepository.deleteById(id);
+    }
+//    public ResponseEntity<Boolean> editMovie(MovieRequest body, int id){
+//        Movie movie = movieRepository.findById(id).
+//                orElseThrow(()-> new
+//                        ResponseStatusException(HttpStatus.NOT_FOUND,"Movie with this id does not exist"));
+//        if(!(body.getId()==id)){
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Cannot change movie");
 //        }
+//        movie.setTitle(body.getTitle());
+//        movie.setGenre(body.getGenre());
+//        movie.setDescription(body.getDescription());
+//        movieRepository.save(movie);
+//        return ResponseEntity.ok(true);
 //    }
-public Movie addMovie(String imdbId) throws JsonProcessingException {
+    public Movie addMovie(String imdbId) throws JsonProcessingException {
 
     MovieOmdbResponse dto = omdbFacade.getMovie(imdbId);
 
