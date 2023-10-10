@@ -1,6 +1,10 @@
 package dk.kea.kinoxp.dto;
 
+import dk.kea.kinoxp.entity.MovieShow;
 import dk.kea.kinoxp.entity.Reservation;
+import dk.kea.kinoxp.entity.Seat;
+import dk.kea.kinoxp.entity.User;
+import jakarta.persistence.Entity;
 import lombok.*;
 
 import java.time.LocalDate;

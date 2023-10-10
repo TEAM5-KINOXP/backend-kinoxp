@@ -5,6 +5,8 @@ import dk.kea.kinoxp.entity.Movie;
 import dk.kea.kinoxp.service.MovieService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("api/movies")
@@ -15,7 +17,12 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @RequestMapping("/imdbid/{imdbId}")
+    @GetMapping
+    List<Movie> getAllMovies() {
+        return movieService.getAllMovies();
+    }
+
+    @GetMapping("/imdbid/{imdbId}")
     public Movie getMovie(@PathVariable String imdbId) {
         return movieService.getMovieByImdbId(imdbId);
     }
@@ -24,4 +31,8 @@ public class MovieController {
         return movieService.addMovie(imdbId);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteMovie(@PathVariable int id) {
+        movieService.deleteMovie(id);
+    }
 }
