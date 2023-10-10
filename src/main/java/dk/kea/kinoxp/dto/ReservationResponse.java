@@ -1,7 +1,9 @@
 package dk.kea.kinoxp.dto;
 
-import jakarta.persistence.Entity;
+import dk.kea.kinoxp.entity.Reservation;
 import lombok.*;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -9,6 +11,21 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ReservationResponse {
-    int id;
+    private int id;
+    private LocalDate reservationDate;
+    private String movieTitle;
+    private int movieShowId;
+    private int seatId;
+    private int timeslot;
 
+    public ReservationResponse(Reservation reservation){
+        this.id = reservation.getId();
+        this.reservationDate = reservation.getReservationDate();
+        if(reservation.getMovieShow() != null) {
+            this.movieShowId = reservation.getMovieShow().getId();
+            this.movieTitle = reservation.getMovieShow().getMovie().getTitle();
+            this.seatId = reservation.getSeat().getId();
+            this.timeslot = reservation.getMovieShow().getTimeslot();
+        }
+    }
 }
