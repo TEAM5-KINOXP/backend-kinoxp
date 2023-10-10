@@ -107,4 +107,5 @@ class MovieServiceTest {
 //        assertEquals("Action", addedMovie.getGenre());
 //        assertEquals("Description", addedMovie.getDescription());
 //        assertEquals(imdbId, addedMovie.getImdbID());
-//    }}
+//    }
+}
