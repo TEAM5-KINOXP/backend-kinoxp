@@ -15,18 +15,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class ReservationResponse {
-    int id;
-    User user;
-    Seat seat;
-    MovieShow movieShow;
-    LocalDate reservationDate;
+    private int id;
+    private LocalDate reservationDate;
+    private String movieTitle;
+    private int movieShowId;
+    private int seatId;
+    private int timeslot;
 
-    public ReservationResponse(Reservation reservation) {
+    public ReservationResponse(Reservation reservation){
         this.id = reservation.getId();
-        this.user = reservation.getUser();
-        this.seat = reservation.getSeat();
-        this.movieShow = reservation.getMovieShow();
         this.reservationDate = reservation.getReservationDate();
+        if(reservation.getMovieShow() != null) {
+            this.movieShowId = reservation.getMovieShow().getId();
+            this.movieTitle = reservation.getMovieShow().getMovie().getTitle();
+            this.seatId = reservation.getSeat().getId();
+            this.timeslot = reservation.getMovieShow().getTimeslot();
+        }
     }
-
 }

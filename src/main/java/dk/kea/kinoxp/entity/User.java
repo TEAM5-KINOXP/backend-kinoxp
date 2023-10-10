@@ -15,7 +15,8 @@ import java.util.List;
 
 @Getter
 @Setter
-//@Builder
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -38,7 +39,8 @@ public class User extends UserWithRoles {
 	private List<Reservation> reservations = new ArrayList<>();
 
 	public User(String username, String email, String password, String firstName, String lastName) {
-		super(username, email, password);
+    
+		super(username, password, email);
 		this.firstName = firstName;
 		this.lastName = lastName;
 

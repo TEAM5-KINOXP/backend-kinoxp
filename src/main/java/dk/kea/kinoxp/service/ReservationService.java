@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-
 import static java.util.Arrays.stream;
 
 @Service
@@ -28,6 +27,19 @@ public class ReservationService {
         this.reservationRepository = reservationRepository;
         this.movieShowRepository = movieShowRepository;
         this.SeatRepository = SeatRepository;
+    }
+
+    public List<ReservationResponse> getReservationsForUser(String username) {
+        User user = userRepository.findById(username).
+                orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+        List<Reservation> reservations = reservationRepository.findByUserUsername(username);
+        List<ReservationResponse> response = reservations.stream().map(res ->
+                new ReservationResponse(res)).toList();
+        return response;
+    }
+
+    public void deleteReservation(int res_id) {
+        reservationRepository.deleteById(res_id);
     }
 
     public ReservationResponse addReservation(ReservationRequest res)
