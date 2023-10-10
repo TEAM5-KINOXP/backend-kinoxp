@@ -12,8 +12,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
-class ReservationServiceTest
-	{
+class ReservationServiceTest{
 private ReservationService reservationService;
 @Mock
 private ReservationRepository reservationRepository;
@@ -28,24 +27,16 @@ private TheaterRepository theaterRepository;
 @Mock
 private MovieRepository movieRepository;
 		@BeforeEach
-		void setUp()
-			{
-				reservationService=new ReservationService(userRepository,movieShowRepository,reservationRepository,seatRepository);
-				Movie m1 = new Movie("Title1", "Description1", "Genre1", "TestIMG");
-				Theater t1 = new Theater("Name1", 100);
-				MovieShow s1 = new MovieShow(LocalDate.now(), m1, t1, 1);
-				User u1=new User("username1","email1","password1","firstName1","lastName1");
-				Reservation r1=new Reservation(s1,u1,1);
-			}
+		void setUp(){
+
+		}
 
 		@Test
-		void addReservation()
-			{
+		void addReservation(){
 
-			}
+		}
 
 		@Test
-		void getAllReservations()
-			{
-			}
-	}
+		void getAllReservations(){
+		}
+}
