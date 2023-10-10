@@ -22,7 +22,7 @@ public class MovieController {
         return movieService.getAllMovies();
     }
 
-    @RequestMapping("/imdbid/{imdbId}")
+    @GetMapping("/imdbid/{imdbId}")
     public Movie getMovie(@PathVariable String imdbId) {
         return movieService.getMovieByImdbId(imdbId);
     }
