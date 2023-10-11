@@ -22,4 +22,11 @@ public class MovieShowService {
         List<MovieShow> movieShows = movieShowRepository.findAll();
         return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow, false)).toList();
     }
+
+    public List<MovieShowResponse> getAllMovieShowsByMovieId(int id) {
+        {
+            List<MovieShow> movieShows = movieShowRepository.findAllByMovieId(id);
+            return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow, false)).toList();
+        }
+    }
 }
