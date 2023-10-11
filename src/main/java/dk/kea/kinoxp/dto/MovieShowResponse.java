@@ -37,4 +37,5 @@ public class MovieShowResponse {
             reservations = movieShow.getReservations().stream().map((res) -> new ReservationResponse()).toList();
         }
     }
+
 }
