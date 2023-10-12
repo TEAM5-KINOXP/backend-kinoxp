@@ -36,6 +36,14 @@ public class MovieShowService {
         return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow, false)).toList();
     }
 
+
+    public List<MovieShowResponse> getAllMovieShowsByMovieId(int id) {
+        {
+            List<MovieShow> movieShows = movieShowRepository.findAllByMovieId(id);
+            return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow, false)).toList();
+        }
+    }
+
     public List<MovieShowResponse> getAllMovieShowsAdmin() {
         List<MovieShow> movieShows = movieShowRepository.findAll();
         return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow)).toList();
@@ -59,6 +67,7 @@ public class MovieShowService {
     public void deleteMovieShow(int id) {
         movieShowRepository.deleteById(id);
     }
+
 
 
 }

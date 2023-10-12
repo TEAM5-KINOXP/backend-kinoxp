@@ -3,7 +3,9 @@ package dk.kea.kinoxp.api;
 import dk.kea.kinoxp.dto.MovieShowRequest;
 import dk.kea.kinoxp.dto.MovieShowResponse;
 import dk.kea.kinoxp.service.MovieShowService;
+
 import org.springframework.http.MediaType;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +24,11 @@ public class MovieShowController {
         return movieShowService.getAllMovieShows();
     }
 
+
+    @GetMapping(path="/movie/{id}")
+    public List<MovieShowResponse> getAllMovieShowsByMovieId(@PathVariable int id){
+        return movieShowService.getAllMovieShowsByMovieId(id);
+
     @GetMapping("/admin")
     public List<MovieShowResponse> getAllMovieShowsAdmin(){
         return movieShowService.getAllMovieShowsAdmin();
@@ -35,5 +42,6 @@ public class MovieShowController {
     @DeleteMapping("/{id}")
     public void deleteMovieShow(@PathVariable int id) {
         movieShowService.deleteMovieShow(id);
+
     }
 }
