@@ -34,9 +34,9 @@ public class UserController {
 		return userService.getUserById(principal.getName());
 	}
 
-	@PutMapping(path = "/{username}")
-	public ResponseEntity<Boolean> updateUser(@PathVariable String username, @RequestBody UserRequest userRequest) {
-		return userService.updateUser(username, userRequest);
+	@PutMapping(path = "/users-for-authenticated")
+	public ResponseEntity<Boolean> updateUser(Principal	principal, @RequestBody UserRequest userRequest) {
+		return userService.updateUser(principal.getName(), userRequest);
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
