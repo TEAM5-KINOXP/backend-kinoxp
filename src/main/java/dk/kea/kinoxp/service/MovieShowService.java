@@ -36,6 +36,10 @@ public class MovieShowService {
         return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow, false)).toList();
     }
 
+    public List<MovieShowResponse> getAllMovieShowsAdmin() {
+        List<MovieShow> movieShows = movieShowRepository.findAll();
+        return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow)).toList();
+    }
     public MovieShowResponse createMovieShow(MovieShowRequest movieShowRequest) {
 
         Theater existingTheater = theaterRepository.findById(movieShowRequest.getTheaterId()).orElseThrow(
@@ -45,15 +49,16 @@ public class MovieShowService {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         MovieShow newMovieShow = new MovieShow(
-                movieShowRequest.getShowingDate(),
-                existingMovie, existingTheater,
-                movieShowRequest.getTimeslot());
+                movieShowRequest.getShowingDate(), existingMovie,
+                existingTheater, movieShowRequest.getTimeslot());
 
 
         movieShowRepository.save(newMovieShow);
         return new MovieShowResponse(newMovieShow, false);
     }
-
+    public void deleteMovieShow(int id) {
+        movieShowRepository.deleteById(id);
+    }
 
 
 }
