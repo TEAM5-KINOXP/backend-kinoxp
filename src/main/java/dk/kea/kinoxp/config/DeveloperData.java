@@ -2,6 +2,7 @@ package dk.kea.kinoxp.config;
 
 import dk.kea.kinoxp.entity.*;
 import dk.kea.kinoxp.repository.*;
+import dk.kea.security.entity.Role;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Configuration;
@@ -52,9 +53,16 @@ public class DeveloperData implements ApplicationRunner
 			LocalDate date = LocalDate.now();
 			LocalDate date2 = date.plusDays(5);
 			//Users
+			User admin1 = new User("admin1", "admin@admin.com", "password1", "adminFirstname", "adminLastName");
+			admin1.addRole(Role.ADMIN);
+			userRepository.save(admin1);
+			
+			
 			User u1 = new User("username1", "email1", "password1", "firstName1", "lastName1");
+			u1.addRole(Role.USER);
 			userRepository.save(u1);
 			User u2 = new User("username2", "email2", "password2", "firstName1", "lastName1");
+			u2.addRole(Role.ADMIN);
 			userRepository.save(u2);
 			//movies:
 			Movie m1 = new Movie("Title1", "Description1", "Genre1", encodedString);

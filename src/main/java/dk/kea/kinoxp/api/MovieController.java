@@ -3,6 +3,7 @@ package dk.kea.kinoxp.api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import dk.kea.kinoxp.entity.Movie;
 import dk.kea.kinoxp.service.MovieService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class MovieController {
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
-
+    
     @GetMapping
     List<Movie> getAllMovies() {
         return movieService.getAllMovies();
