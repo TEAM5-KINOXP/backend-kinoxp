@@ -45,7 +45,7 @@ public class ReservationService {
     public ReservationResponse addReservation(ReservationRequest res)
         {
             // check if user exists
-            User user = userRepository.findById(res.getUserName()).orElseThrow (
+            User user = userRepository.findById(res.getUsername()).orElseThrow (
                   () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"No member with this id found"));
 
             // check if movieShow exists

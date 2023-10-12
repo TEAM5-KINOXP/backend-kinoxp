@@ -80,10 +80,14 @@ public class SecurityConfig {
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/reservations/reservations-for-authenticated")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern("/api/users/users-for-authenticated")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern("/api/shows/movie/{id}")).hasAuthority("USER")
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/api/reservations")).hasAuthority("USER")
+            .requestMatchers(mvcMatcherBuilder.pattern("/api/reservations")).hasAuthority("USER")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/api/users")).hasAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST,"/api/users")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/api/users/{username}")).hasAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern("/api/movies/*")).hasAuthority("ADMIN")
 
                     //Use this to completely disable security (Will not work if endpoints has been marked with @PreAuthorize)
-            //.requestMatchers(mvcMatcherBuilder.pattern("/**")).permitAll());
+            //.requestMatchers(mvcMatcherBuilder.pattern("/**")).permitAll()); /users
             .anyRequest().authenticated());
 
     return http.build();
