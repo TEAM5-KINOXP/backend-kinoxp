@@ -30,19 +30,19 @@ public class MovieShowController {
     public List<MovieShowResponse> getAllMovieShowsByMovieId(@PathVariable int id) {
         return movieShowService.getAllMovieShowsByMovieId(id);
     }
-        @GetMapping("/admin")
-        public List<MovieShowResponse> getAllMovieShowsAdmin () {
-            return movieShowService.getAllMovieShowsAdmin();
-        }
-
-        @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-        public MovieShowResponse createMovieShow (@RequestBody MovieShowRequest movieShowRequest){
-
-            return movieShowService.createMovieShow(movieShowRequest);
-        }
-        @DeleteMapping("/{id}")
-        public void deleteMovieShow ( @PathVariable int id){
-            movieShowService.deleteMovieShow(id);
-
-        }
+    @GetMapping("/admin")
+    public List<MovieShowResponse> getAllMovieShowsAdmin () {
+        return movieShowService.getAllMovieShowsAdmin();
     }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public MovieShowResponse createMovieShow (@RequestBody MovieShowRequest movieShowRequest){
+
+    return movieShowService.createMovieShow(movieShowRequest);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteMovieShow ( @PathVariable int id){
+        movieShowService.deleteMovieShow(id);
+
+    }
+}

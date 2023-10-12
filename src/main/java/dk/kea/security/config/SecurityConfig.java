@@ -79,7 +79,10 @@ public class SecurityConfig {
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/shows")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/reservations/reservations-for-authenticated")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern("/api/users/users-for-authenticated")).hasAuthority("USER")
-            //Use this to completely disable security (Will not work if endpoints has been marked with @PreAuthorize)
+            .requestMatchers(mvcMatcherBuilder.pattern("/api/shows/movie/{id}")).hasAuthority("USER")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/api/reservations")).hasAuthority("USER")
+
+                    //Use this to completely disable security (Will not work if endpoints has been marked with @PreAuthorize)
             //.requestMatchers(mvcMatcherBuilder.pattern("/**")).permitAll());
             .anyRequest().authenticated());
 
