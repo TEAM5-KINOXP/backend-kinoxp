@@ -3,6 +3,7 @@ package dk.kea.kinoxp.entity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import dk.kea.kinoxp.dto.MovieShowRequest;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -53,13 +54,12 @@ public class MovieShow {
         this.theater = theater;
         this.timeslot = timeslot;
         this.seats = new ArrayList<>();
-        for(int i = 0; i <= theater.getSeats().size()-1; i++) {
-          Seat  seat=theater.getSeats().get(i);
+        for (int i = 0; i <= theater.getSeats().size() - 1; i++) {
+            Seat seat = theater.getSeats().get(i);
             this.seats.add(seat);
         }
-
-
     }
+
     public void addReservation(Reservation reservation){
         reservations.add(reservation);
     }
