@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import dk.kea.kinoxp.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -28,9 +29,9 @@ public class UserController {
 		return userService.getUsers();
 	}
 
-	@GetMapping(path = "/{username}")
-	public UserResponse getUserBy_Id(@PathVariable String username) throws Exception {
-		return userService.getUserById(username);
+	@GetMapping(path = "/users-for-authenticated")
+	public UserResponse getUserBy_Id(Principal principal) throws Exception {
+		return userService.getUserById(principal.getName());
 	}
 
 	@PutMapping(path = "/{username}")
