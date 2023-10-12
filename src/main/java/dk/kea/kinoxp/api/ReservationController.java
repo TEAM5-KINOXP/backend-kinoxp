@@ -29,7 +29,7 @@ public class ReservationController {
     public void deleteReservation(@PathVariable int res_id) {
         reservationService.deleteReservation(res_id);
     }
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/reservations-for-authenticated" )
     public ReservationResponse addReservation(@RequestBody ReservationRequest res){
         ReservationResponse r = reservationService.addReservation(res);
         return r;

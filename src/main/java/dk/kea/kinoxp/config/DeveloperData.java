@@ -73,10 +73,10 @@ public class DeveloperData implements ApplicationRunner
 			movieRepository.save(m3);
 
 			//Theaters
-			Theater t1 = new Theater("Name1", 100); // theater creates seats
+			Theater t1 = new Theater("Name1", 240); // theater creates seats
 			theaterRepository.save(t1);
 			seatRepository.saveAll(t1.getSeats());
-			Theater t2 = new Theater("Name2", 300); // theater creates seats
+			Theater t2 = new Theater("Name2", 400); // theater creates seats
 			theaterRepository.save(t2);
 			seatRepository.saveAll(t2.getSeats());
 

@@ -4,6 +4,7 @@ import dk.kea.kinoxp.dto.MovieShowResponse;
 import dk.kea.kinoxp.entity.Movie;
 import dk.kea.kinoxp.entity.MovieShow;
 import dk.kea.kinoxp.entity.Theater;
+import dk.kea.kinoxp.repository.MovieRepository;
 import dk.kea.kinoxp.repository.MovieShowRepository;
 import dk.kea.kinoxp.repository.TheaterRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,9 +27,11 @@ class MovieShowServiceTest {
     private MovieShowRepository movieShowRepository;
     @Mock
     private TheaterRepository theaterRepository;
+    @Mock
+    private MovieRepository movieRepository;
     @BeforeEach
     void setUp(){
-        movieShowService = new MovieShowService(theaterRepository, movieShowRepository);
+        movieShowService = new MovieShowService(theaterRepository, movieShowRepository,movieRepository);
     }
     @Test
     void testGetAllMovies(){

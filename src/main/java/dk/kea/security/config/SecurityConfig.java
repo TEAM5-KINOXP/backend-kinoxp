@@ -78,6 +78,7 @@ public class SecurityConfig {
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/test/admin-only")).hasAuthority("ADMIN")
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/shows")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/reservations/reservations-for-authenticated")).hasAuthority("USER")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/api/reservations/reservations-for-authenticated")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern("/api/users/users-for-authenticated")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern("/api/shows/movie/{id}")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern("/api/reservations")).hasAuthority("USER")
