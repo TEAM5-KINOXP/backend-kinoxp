@@ -22,6 +22,8 @@ public class MovieShowResponse {
     List<ReservationResponse> reservations;
     Theater theater;
     Movie movie;
+    int theaterId;
+    String movieTitle;
 
     public MovieShowResponse(MovieShow movieShow, boolean showRes) {
         this.id = movieShow.getId();
@@ -37,5 +39,11 @@ public class MovieShowResponse {
             reservations = movieShow.getReservations().stream().map((res) -> new ReservationResponse()).toList();
         }
     }
-
-}
+    public MovieShowResponse(MovieShow movieShow) {
+        this.id = movieShow.getId();
+        this.showingDate = movieShow.getShowingDate();
+        this.timeslot = movieShow.getTimeslot();
+        this.theaterId = movieShow.getTheater().getId();
+        this.movieTitle = movieShow.getMovie().getTitle();
+        }
+    }
