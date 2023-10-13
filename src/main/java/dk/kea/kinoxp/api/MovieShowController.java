@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "*")
-@RequestMapping("api/shows")
+@CrossOrigin
+@RequestMapping("/api/shows")
 public class MovieShowController {
     MovieShowService movieShowService;
 

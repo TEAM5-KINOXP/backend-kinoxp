@@ -11,8 +11,8 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "*")
-@RequestMapping("api/reservations")
+@CrossOrigin
+@RequestMapping("/api/reservations")
 public class ReservationController {
     ReservationService reservationService;
 
