@@ -38,19 +38,7 @@ public class MovieService {
     public void deleteMovie(int id) {
         movieRepository.deleteById(id);
     }
-//    public ResponseEntity<Boolean> editMovie(MovieRequest body, int id){
-//        Movie movie = movieRepository.findById(id).
-//                orElseThrow(()-> new
-//                        ResponseStatusException(HttpStatus.NOT_FOUND,"Movie with this id does not exist"));
-//        if(!(body.getId()==id)){
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Cannot change movie");
-//        }
-//        movie.setTitle(body.getTitle());
-//        movie.setGenre(body.getGenre());
-//        movie.setDescription(body.getDescription());
-//        movieRepository.save(movie);
-//        return ResponseEntity.ok(true);
-//    }
+
     public Movie addMovie(String imdbId) throws JsonProcessingException {
 
     MovieOmdbResponse dto = omdbFacade.getMovie(imdbId);
