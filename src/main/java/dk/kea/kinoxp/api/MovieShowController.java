@@ -20,7 +20,7 @@ public class MovieShowController {
         this.movieShowService = movieShowService;
     }
 
-    @GetMapping
+    @GetMapping(headers = "Allow-Control-Allow-Origin: *")
     public List<MovieShowResponse> getAllMovieShows() {
         return movieShowService.getAllMovieShows();
     }

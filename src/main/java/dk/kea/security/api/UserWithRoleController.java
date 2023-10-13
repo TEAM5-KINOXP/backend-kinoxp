@@ -7,7 +7,7 @@ import dk.kea.security.service.UserWithRolesService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController()
 @RequestMapping("/api/user-with-role")
 public class UserWithRoleController {
 
