@@ -19,7 +19,11 @@ public class ReservationController {
     public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
-
+    
+    @GetMapping
+    public List<ReservationResponse> getAllReservationsAdmin(){
+        return reservationService.getAllReservations();
+    }    
     @GetMapping("/reservations-for-authenticated")
     public List<ReservationResponse> getAllReservations(Principal principal){
         List<ReservationResponse> res = reservationService.getReservationsForUser(principal.getName());
@@ -34,9 +38,6 @@ public class ReservationController {
         ReservationResponse r = reservationService.addReservation(res);
         return r;
     }
-    @GetMapping
-    public List<ReservationResponse> getAllReservations(){
-       return reservationService.getAllReservations();
-    }
+
 }
 
