@@ -12,6 +12,7 @@ public class CorsConfig {
 
     //When you know the domain name for your client, add it below before deployment
     private static final String[] ALLOWED_ORIGINS = new String[] {
+            "*",
             "https://zealous-sea-08cec4a03.3.azurestaticapps.net/",
             "http://127.0.0.1:5500",
             "https://kinoxp-backend.azurewebsites.net/"
