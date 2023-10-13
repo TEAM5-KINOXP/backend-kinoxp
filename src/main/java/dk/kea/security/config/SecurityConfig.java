@@ -80,7 +80,6 @@ public class SecurityConfig {
             .requestMatchers(mvcMatcherBuilder.pattern("/api/users/users-for-authenticated")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern("/api/shows/movie/{id}")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern("/api/reservations/reservations-for-authenticated")).hasAuthority("USER")
-            .requestMatchers(mvcMatcherBuilder.pattern("/api/reservations/{res_id}")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/api/users")).hasAuthority("ADMIN")
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST,"/api/users")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/api/users/{username}")).hasAuthority("ADMIN")
