@@ -121,6 +121,12 @@ private MovieRepository movieRepository;
 				}
 
 		@Test
+<<<<<<< HEAD
+		void getAllReservations(){
+
+		}
+}
+=======
 		void getAllReservations()
 			{
 				Movie m1 = new Movie("Title1", "Description1", "Genre1", "TestIMG");
@@ -159,3 +165,4 @@ private MovieRepository movieRepository;
 //		}
 
 	}
+>>>>>>> 4b89036de2b76506d101d4e50a80675d2f6236bc
