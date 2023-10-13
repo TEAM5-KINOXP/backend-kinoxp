@@ -12,8 +12,8 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "*")
-@RequestMapping("api/users")
+@CrossOrigin
+@RequestMapping("/api/users")
 
 public class UserController {
 	UserService userService;
