@@ -83,9 +83,9 @@ class MovieServiceTest {
 //        dto.setGenre("Action");
 //        dto.setDescription("Description");
 //        dto.setImdbID(imdbId);
-//
+//        OmdbFacade test = new OmdbFacade();
 //        // Mock the behavior of omdbFacade to return the DTO
-//        when(omdbFacade.getMovie(imdbId)).thenReturn(dto);
+//        when(test.getMovie(imdbId)).thenReturn(dto);
 //
 //        // Create a movie object without using a toMovie method
 //        Movie movie = new Movie();
