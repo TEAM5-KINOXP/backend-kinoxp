@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/theaters")
 public class TheaterController {
     TheaterService theaterService;
