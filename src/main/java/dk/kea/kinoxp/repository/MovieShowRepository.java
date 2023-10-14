@@ -11,4 +11,5 @@ public interface MovieShowRepository extends JpaRepository<MovieShow, Integer> {
 	Optional<MovieShow> findById(Integer integer);
 
 	List<MovieShow> findAllByMovieId(int id);
+	boolean existsByMovieId(int id);
 }

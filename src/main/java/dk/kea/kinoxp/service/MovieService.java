@@ -5,26 +5,29 @@ import dk.kea.kinoxp.api_facade.OmdbFacade;
 import dk.kea.kinoxp.dto.MovieOmdbResponse;
 import dk.kea.kinoxp.entity.Movie;
 import dk.kea.kinoxp.repository.MovieRepository;
+import dk.kea.kinoxp.repository.MovieShowRepository;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
     MovieRepository movieRepository;
+    MovieShowRepository movieShowRepository;
 
     @Autowired
     OmdbFacade omdbFacade;
 
-    public MovieService(MovieRepository movieRepository) {
+    public MovieService(MovieRepository movieRepository, MovieShowRepository movieShowRepository) {
         this.movieRepository = movieRepository;
+        this.movieShowRepository = movieShowRepository;
     }
 
     public Movie getMovieByImdbId(String imdbId) {
@@ -36,6 +39,9 @@ public class MovieService {
         return movieRepository.findAll();
     }
     public void deleteMovie(int id) {
+        if(movieShowRepository.existsByMovieId(id)){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not allowed to delete while movie shows are running.");
+        }
         movieRepository.deleteById(id);
     }
 

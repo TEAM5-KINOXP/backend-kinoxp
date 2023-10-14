@@ -45,7 +45,7 @@ public class MovieShow {
     @JoinColumn(name = "movie_show_id")
     List<Seat> seats=new ArrayList<>();
 
-    @OneToMany(mappedBy = "movieShow")
+    @OneToMany(mappedBy = "movieShow", cascade = CascadeType.REMOVE)
     List<Reservation> reservations = new ArrayList<>();
 
     public MovieShow(LocalDate showingDate, Movie movie, Theater theater, int timeslot) {

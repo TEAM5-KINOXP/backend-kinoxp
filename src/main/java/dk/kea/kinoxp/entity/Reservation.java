@@ -27,8 +27,8 @@ public class Reservation {
     @ManyToOne
     MovieShow movieShow;
     @ManyToOne
-
     Seat seat;
+
     public Reservation(MovieShow movieShow, User user, int seatNumber) {
         this.reservationDate = movieShow.getShowingDate();
         this.movieShow = movieShow;

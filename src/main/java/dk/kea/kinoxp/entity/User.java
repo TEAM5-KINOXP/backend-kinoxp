@@ -35,7 +35,7 @@ public class User extends UserWithRoles {
 	private LocalDateTime edited;
 
 	// addrelations
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private List<Reservation> reservations = new ArrayList<>();
 
 	public User(String username, String email, String password, String firstName, String lastName) {
