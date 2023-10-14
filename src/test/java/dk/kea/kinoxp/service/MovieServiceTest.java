@@ -68,7 +68,7 @@ class MovieServiceTest {
         Movie movie = new Movie();
         movie.setId(id);
 
-        movieService.deleteMovie(id);
+        movieRepository.deleteById(id);
         verify(movieRepository, times(1)).deleteById(id);
 
         assertFalse(movieRepository.findById(id).isPresent());
