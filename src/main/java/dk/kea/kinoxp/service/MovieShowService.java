@@ -33,6 +33,7 @@ public class MovieShowService {
 
     public List<MovieShowResponse> getAllMovieShows() {
         List<MovieShow> movieShows = movieShowRepository.findAll();
+        System.out.println(movieShows);
         return movieShows.stream().map(movieShow -> new MovieShowResponse(movieShow, false)).toList();
     }
 

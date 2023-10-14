@@ -1,6 +1,7 @@
 package dk.kea.kinoxp.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import dk.kea.kinoxp.entity.Movie;
 import dk.kea.kinoxp.entity.MovieShow;
 import dk.kea.kinoxp.entity.Theater;
